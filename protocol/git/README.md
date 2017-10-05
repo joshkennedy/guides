@@ -1,13 +1,10 @@
-Git Protocol
-============
+# Git Protocol
 
 A guide for programming within version control.
 
-Maintain a Repo
----------------
+## Maintain a Repo
 
-* Avoid including files in source control that are specific to your
-  development machine or process.
+* Avoid including files in source control that are specific to your development machine or process.
 * Delete local and remote feature branches after merging.
 * Perform work in a feature branch.
 * Rebase frequently to incorporate upstream changes.
@@ -15,28 +12,27 @@ Maintain a Repo
 
 [pull request]: https://help.github.com/articles/using-pull-requests/
 
-Write a Feature
----------------
+## Write a Feature
 
 Create a local feature branch based off master.
 
-    git checkout master
-    git pull
-    git checkout -b <branch-name>
+    $ git checkout master
+    $ git pull
+    $ git checkout -b <branch-name>
 
 Rebase frequently to incorporate upstream changes.
 
-    git fetch origin
-    git rebase origin/master
+    $ git fetch origin
+    $ git rebase origin/master
 
 Resolve conflicts. When feature is complete and tests pass, stage the changes.
 
-    git add --all
+    $ git add --all
 
 When you've staged the changes, commit them.
 
-    git status
-    git commit --verbose
+    $ git status
+    $ git commit --verbose
 
 Write a [good commit message]. Example format:
 
@@ -47,15 +43,13 @@ Write a [good commit message]. Example format:
 
     http://project.management-system.com/ticket/123
 
-If you've created more than one commit,
-[use `git rebase` interactively](https://help.github.com/articles/about-git-rebase/)
-to squash them into cohesive commits with good messages:
+If you've created more than one commit, [use `git rebase` interactively](https://help.github.com/articles/about-git-rebase/) to squash them into cohesive commits with good messages:
 
-    git rebase -i origin/master
+    $ git rebase -i origin/master
 
 Share your branch.
 
-    git push origin <branch-name>
+    $ git push origin <branch-name>
 
 Submit a [GitHub pull request].
 
@@ -64,57 +58,46 @@ Ask for a code review in the project's chat room.
 [good commit message]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 [GitHub pull request]: https://help.github.com/articles/using-pull-requests/
 
-Review Code
------------
+## Review Code
 
-A team member other than the author reviews the pull request. They follow
-[Code Review](/code-review) guidelines to avoid
-miscommunication.
+A team member other than the author reviews the pull request. They follow [Code Review](/code-review) guidelines to avoid miscommunication.
 
-They make comments and ask questions directly on lines of code in the GitHub
-web interface or in the project's chat room.
+They make comments and ask questions directly on lines of code in the GitHub web interface or in the project's chat room.
 
 For changes which they can make themselves, they check out the branch.
 
-    git checkout <branch-name>
-    ./bin/setup
-    git diff staging/master..HEAD
+    $ git checkout <branch-name>
+    $ git diff staging/master..HEAD
 
-They make small changes right in the branch, test the feature on their machine,
-run tests, commit, and push.
+They make small changes right in the branch, test the feature on their machine, run tests, commit, and push.
 
 When satisfied, they comment on the pull request `Ready to merge.`
 
-Merge
------
+## Merge
 
-Rebase interactively. Squash commits like "Fix whitespace" into one or a
-small number of valuable commit(s). Edit commit messages to reveal intent. Run
-tests.
+Rebase interactively. Squash commits like "Fix whitespace" into one or a small number of valuable commit(s). Edit commit messages to reveal intent. Run tests.
 
-    git fetch origin
-    git rebase -i origin/master
+    $ git fetch origin
+    $ git rebase -i origin/master
 
-Force push your branch. This allows GitHub to automatically close your pull
-request and mark it as merged when your commit(s) are pushed to master. It also
- makes it possible to [find the pull request] that brought in your changes.
+Force push your branch. This allows GitHub to automatically close your pull request and mark it as merged when your commit(s) are pushed to master. It also makes it possible to [find the pull request] that brought in your changes.
 
-    git push --force-with-lease origin <branch-name>
+    $ git push --force-with-lease origin <branch-name>
 
 View a list of new commits. View changed files. Merge branch into master.
 
-    git log origin/master..<branch-name>
-    git diff --stat origin/master
-    git checkout master
-    git merge <branch-name> --ff-only
-    git push
+    $ git log origin/master..<branch-name>
+    $ git diff --stat origin/master
+    $ git checkout master
+    $ git merge <branch-name> --ff-only
+    $ git push
 
 Delete your remote feature branch.
 
-    git push origin --delete <branch-name>
+    $ git push origin --delete <branch-name>
 
 Delete your local feature branch.
 
-    git branch --delete <branch-name>
+    $ git branch --delete <branch-name>
 
 [find the pull request]: http://stackoverflow.com/a/17819027

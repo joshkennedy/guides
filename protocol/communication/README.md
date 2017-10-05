@@ -1,9 +1,7 @@
-Communication
-=============
+# Communication
 
-A guide for communicating within thoughtbot.
+A guide for communicating within Ramsey Solutions.
 
-Tickets
--------
+## Tickets
 
 * People assign themselves to tickets. When in doubt, do not assign a ticket to someone.
