@@ -1,16 +1,12 @@
-Rails Protocol
-==============
+# Rails Protocol
 
 A guide for writing great web apps.
 
-Set Up Laptop
--------------
+## Set Up Laptop
 
-Set up your laptop with [this script](https://github.com/thoughtbot/laptop)
-and [these dotfiles](https://github.com/thoughtbot/dotfiles).
+Set up your laptop with [this script](https://github.com/thoughtbot/laptop) and [these dotfiles](https://github.com/thoughtbot/dotfiles).
 
-Create App
-----------
+## Create App
 
 Get Suspenders.
 
@@ -20,8 +16,7 @@ Create the app.
 
     suspenders app --heroku true --github organization/app
 
-Set Up App
-----------
+## Set Up App
 
 Get the code.
 
@@ -32,51 +27,37 @@ Set up the app's dependencies.
     cd project
     ./bin/setup
 
-Use [Heroku config](https://github.com/ddollar/heroku-config) to get `ENV`
-variables.
+Use [Heroku config](https://github.com/ddollar/heroku-config) to get `ENV` variables.
 
     heroku config:pull --remote staging
 
-Delete extra lines in `.env`, leaving only those needed for app to function
-properly. For example: `BRAINTREE_MERCHANT_ID` and `S3_SECRET`.
+Delete extra lines in `.env`, leaving only those needed for app to function properly. For example: `BRAINTREE_MERCHANT_ID` and `S3_SECRET`.
 
 Use [Foreman](https://github.com/ddollar/foreman) to run the app locally.
 
     foreman start
 
-It uses your `.env` file and `Procfile` to run processes
-like Heroku's [Cedar](https://devcenter.heroku.com/articles/cedar/) stack.
+It uses your `.env` file and `Procfile` to run processes like Heroku's [Cedar](https://devcenter.heroku.com/articles/cedar/) stack.
 
-Git Protocol
-------------
+## Git Protocol
 
 Follow the normal [Git Protocol](/protocol/git).
 
-Product Review
---------------
+## Product Review
 
 Follow the normal [Product Review protocol](/protocol/product-review).
 
-Code Review
------------
+## Code Review
 
-Follow the normal [Code Review guidelines](/code-review). When reviewing others'
-Rails work, look in particular for:
+Follow the normal [Code Review guidelines](/code-review). When reviewing others' Rails work, look in particular for:
 
-* Review data integrity closely, such as migrations that make irreversible
-  changes to the data, and whether there is a related todo to make a database
-  backup during the staging and production deploys.
+* Review data integrity closely, such as migrations that make irreversible changes to the data, and whether there is a related todo to make a database backup during the staging and production deploys.
 * Review SQL queries for potential SQL injection.
-* Review whether dependency upgrades include a reason in the commit message,
-  such as a link to the dependency's `ChangeLog` or `NEWS` file.
-* Review whether new database indexes are necessary if new columns or SQL
-  queries were added.
-* Review whether new scheduler (`cron`) tasks have been added and whether there
-  is a related todo in the project management system to add it during the
-  staging and production deploys.
+* Review whether dependency upgrades include a reason in the commit message, such as a link to the dependency's `ChangeLog` or `NEWS` file.
+* Review whether new database indexes are necessary if new columns or SQL queries were added.
+* Review whether new scheduler (`cron`) tasks have been added and whether there is a related todo in the project management system to add it during the staging and production deploys.
 
-Deploy
-------
+## Deploy
 
 View a list of new commits. View changed files.
 
@@ -120,14 +101,11 @@ Close pull request and comment `Merged.`
 
 [Introspect]: http://blog.heroku.com/archives/2011/6/24/the_new_heroku_3_visibility_introspection/
 
-Set Up Production Environment
------------------------------
+## Set Up Production Environment
 
 * Make sure that your [`Procfile`] is set up to run Unicorn.
 * Make sure the PG Backups add-on is enabled.
-* Create a read-only [Heroku Follower] for your production database. If a Heroku
-  database outage occurs, Heroku can use the follower to get your app back up
-  and running faster.
+* Create a read-only [Heroku Follower] for your production database. If a Heroku database outage occurs, Heroku can use the follower to get your app back up and running faster.
 
 [Heroku Follower]: https://devcenter.heroku.com/articles/improving-heroku-postgres-availability-with-followers
 [`Procfile`]: https://devcenter.heroku.com/articles/procfile
